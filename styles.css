@@ -1,26 +1,24 @@
 /* ==========================================================================
    VOIES BASSES — design tokens
-   Palette: bark ink / linen paper / burnt rust / muted moss / soft ochre
-   Type: Fraunces (display) + Inter (body) + IBM Plex Mono (labels)
+   Palette: ink (#260101) / paper (#FFFCF3) / rust (#772E03) — tints only
+   Type: Playfair Display (display) + Glacial Indifference (body)
    Signature: vertical "depth rail" — literal descent through the page,
    echoing "voies basses" (going beneath the surface).
    ========================================================================== */
 
 :root{
-  --ink:#1C160F;
-  --ink-soft:#3A2E1E;
-  --paper:#EEE3CC;
-  --paper-soft:#F6EFDE;
-  --rust:#A8451F;
-  --rust-soft:#C15A2C;
-  --moss:#586B4D;
-  --ochre:#C6862E;
-  --line:#CBB998;
-  --line-dark:#4A3C28;
+  --ink:#260101;
+  --ink-soft:#5A2418;
+  --paper:#FFFCF3;
+  --paper-soft:#FBF8F0;
+  --rust:#772E03;
+  --rust-soft:#9A4210;
+  --line: rgba(38,1,1,0.14);
+  --line-dark: rgba(255,252,243,0.22);
 
-  --font-display:'Fraunces', serif;
-  --font-body:'Inter', sans-serif;
-  --font-mono:'IBM Plex Mono', monospace;
+  --font-display:'Playfair Display', serif;
+  --font-body:'Glacial Indifference', sans-serif;
+  --font-mono:'Glacial Indifference', sans-serif;
 
   --rail-w:64px;
   --ease:cubic-bezier(.22,.68,0,1);
@@ -65,9 +63,9 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 
 /* ---------- Eyebrow / labels ---------- */
 .eyebrow{
-  font-family:var(--font-mono);
-  font-size:12px;
-  letter-spacing:.14em;
+  font-family:var(--font-body);
+  font-size:11px;
+  letter-spacing:.12em;
   text-transform:uppercase;
   color:var(--rust);
   margin-bottom:14px;
@@ -178,13 +176,14 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 }
 .site-header__inner{display:flex;align-items:center;justify-content:space-between;}
 .brand{display:flex;align-items:center;gap:12px;}
-.brand__mark{width:34px;height:34px;border-radius:50%;object-fit:cover;}
+.brand__mark{height:26px;width:auto;object-fit:contain;}
 .brand__text{
-  font-family:var(--font-mono);
-  font-size:12px;
-  letter-spacing:.08em;
+  font-family:var(--font-body);
+  font-size:11px;
+  letter-spacing:.04em;
   text-transform:uppercase;
   display:none;
+  opacity:.75;
 }
 @media (min-width:640px){ .brand__text{display:block;} }
 
@@ -273,33 +272,72 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 .situation-card{
   background:var(--paper-soft);
   padding:36px 30px;
-  transition:background .4s var(--ease);
+  transition:background .45s var(--ease), transform .45s var(--ease), box-shadow .45s var(--ease);
+  position:relative;
+  z-index:1;
 }
-.situation-card:hover{background:#fff;}
+.situation-card:hover{
+  background:#fff;
+  transform:translateY(-6px);
+  box-shadow:0 18px 40px rgba(38,1,1,0.1);
+  z-index:2;
+}
 .situation-card__index{
-  font-family:var(--font-mono);
+  font-family:var(--font-body);
   font-size:12px;
   color:var(--rust);
   display:block;
   margin-bottom:18px;
+  transition:transform .45s var(--ease), color .45s var(--ease);
+}
+.situation-card:hover .situation-card__index{
+  transform:translateX(4px) scale(1.15);
+  color:var(--ink);
 }
 .situation-card h3{
   font-family:var(--font-display);
   font-size:20px;
   font-weight:500;
   margin-bottom:12px;
+  transition:transform .45s var(--ease);
 }
+.situation-card:hover h3{transform:translateX(3px);}
 .situation-card p{font-size:14.5px;color:var(--ink-soft);}
 
+/* staggered reveal across the grid */
+.situations__grid [data-reveal]:nth-child(1){transition-delay:0s;}
+.situations__grid [data-reveal]:nth-child(2){transition-delay:.08s;}
+.situations__grid [data-reveal]:nth-child(3){transition-delay:.16s;}
+.situations__grid [data-reveal]:nth-child(4){transition-delay:.24s;}
+.situations__grid [data-reveal]:nth-child(5){transition-delay:.32s;}
+.situations__grid [data-reveal]:nth-child(6){transition-delay:.4s;}
+
 /* ==========================================================================
-   ROLE
+   ROLE (photo background, dark overlay — echoes the hero)
    ========================================================================== */
-.role{padding:60px 0 140px;}
+.role{
+  position:relative;
+  padding:120px 0 140px;
+  overflow:hidden;
+  background:var(--ink);
+  color:var(--paper);
+}
+.role__media{position:absolute;inset:0;z-index:0;}
+.role__media img{
+  width:100%;height:100%;object-fit:cover;
+  filter:blur(2px) saturate(0.9);
+  opacity:.5;
+}
+.role__grain{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg, rgba(38,1,1,.55) 0%, rgba(38,1,1,.72) 55%, rgba(38,1,1,.92) 100%);
+}
+.role > .wrap{position:relative;z-index:2;}
 .role__intro{max-width:520px;margin-bottom:56px;}
-.role__lead{font-family:var(--font-display);font-size:22px;font-style:italic;}
+.role__lead{font-family:var(--font-display);font-size:22px;font-style:italic;color:var(--paper);}
 .role__body{max-width:820px;margin-bottom:72px;}
-.role__body .section-title{margin-bottom:24px;}
-.role__text{font-size:17px;color:var(--ink-soft);}
+.role__body .section-title{margin-bottom:24px;color:var(--paper);}
+.role__text{font-size:17px;color:rgba(255,252,243,0.78);}
 
 .steps{
   display:grid;
@@ -316,7 +354,7 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
   padding-bottom:16px;
   border-bottom:1px solid var(--line);
 }
-.steps__num--light{color:var(--ochre);border-color:var(--line-dark);}
+.steps__num--light{color:var(--paper);border-color:var(--line-dark);}
 .steps__item h3{font-family:var(--font-display);font-size:19px;font-weight:500;margin-bottom:10px;}
 .steps__item p{font-size:14.5px;color:var(--ink-soft);}
 
@@ -366,7 +404,7 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 }
 .approche__text{
   font-size:18px;
-  color:#C9BCA0;
+  color:rgba(255,252,243,0.72);
   max-width:680px;
   margin:28px 0 72px;
 }
@@ -377,7 +415,7 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 }
 @media (min-width:720px){ .approche__steps{grid-template-columns:repeat(4,1fr);} }
 .approche__steps h3{font-family:var(--font-display);font-size:19px;font-weight:500;margin-bottom:10px;}
-.approche__steps p{font-size:14.5px;color:#B5A98D;}
+.approche__steps p{font-size:14.5px;color:rgba(255,252,243,0.6);}
 
 /* ==========================================================================
    ABOUT
@@ -499,19 +537,6 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 }
 .testimonials__dots span.is-active{background:var(--rust);transform:scale(1.3);}
 
-/* ---------- Logo strip ---------- */
-.logo-strip{margin-top:90px;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-.logo-strip__track{
-  display:flex;
-  align-items:center;
-  gap:64px;
-  padding:32px 0;
-  width:max-content;
-  animation:marquee 30s linear infinite;
-}
-.logo-strip__track img{height:36px;width:auto;opacity:.6;filter:grayscale(1);}
-@keyframes marquee{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
-
 /* ==========================================================================
    FOOTER
    ========================================================================== */
@@ -526,7 +551,7 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
   font-size:13px;
   letter-spacing:.1em;
   text-transform:uppercase;
-  color:var(--ochre);
+  color:var(--paper);
   display:flex;
   justify-content:center;
   gap:22px;
@@ -548,6 +573,6 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
   gap:14px;
   align-items:center;
   font-size:13px;
-  color:#8A7C60;
+  color:rgba(255,252,243,0.55);
 }
-.footer .social-links a{border-color:#8A7C60;color:#C9BCA0;}
+.footer .social-links a{border-color:rgba(255,252,243,0.55);color:rgba(255,252,243,0.72);}
