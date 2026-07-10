@@ -1,7 +1,7 @@
 /* ==========================================================================
    VOIES BASSES — design tokens
-   Palette: ink (#260101) / paper (#FFFCF3) / rust (#772E03) — tints only
-   Type: Playfair Display (display) + Glacial Indifference (body)
+   Palette: bark ink / linen paper / burnt rust / muted moss / soft ochre
+   Type: Fraunces (display) + Inter (body) + IBM Plex Mono (labels)
    Signature: vertical "depth rail" — literal descent through the page,
    echoing "voies basses" (going beneath the surface).
    ========================================================================== */
@@ -263,7 +263,7 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 /* ==========================================================================
    SITUATIONS
    ========================================================================== */
-.situations{padding:60px 0 140px;}
+.situations{padding:60px 0 140px;position:relative;overflow:hidden;}
 .situations .section-title{margin-bottom:56px;}
 .situations__grid{
   display:grid;
@@ -366,6 +366,12 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 .steps__item p{font-size:14.5px;color:var(--ink-soft);}
 
 /* ==========================================================================
+   MA MÉTHODE
+   ========================================================================== */
+.methode{padding:100px 0 140px;}
+.methode .eyebrow{margin-bottom:44px;}
+
+/* ==========================================================================
    SERVICES
    ========================================================================== */
 .services{padding:60px 0 140px;}
@@ -391,16 +397,19 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 .service-card__media{position:absolute;inset:0;z-index:0;}
 .service-card__media img{
   width:100%;height:100%;object-fit:cover;
-  filter:blur(1.5px) saturate(0.92);
-  opacity:.55;
+  filter:blur(1px) saturate(0.95);
+  opacity:.9;
   transform:scale(1.04);
   transition:transform .8s var(--ease), opacity .5s var(--ease);
 }
-.service-card:hover .service-card__media img{transform:scale(1.1);opacity:.62;}
+.service-card:hover .service-card__media img{transform:scale(1.1);opacity:.95;}
 .service-card__overlay{
   position:absolute;inset:0;z-index:1;
-  background:linear-gradient(180deg, rgba(38,1,1,.1) 0%, rgba(38,1,1,.55) 50%, rgba(38,1,1,.94) 100%);
+  background:linear-gradient(180deg, rgba(38,1,1,.08) 0%, rgba(38,1,1,.5) 55%, rgba(38,1,1,.9) 100%);
+  opacity:0;
+  transition:opacity 1.3s var(--ease) .25s;
 }
+.service-card.is-visible .service-card__overlay{opacity:1;}
 .service-card__body{position:relative;z-index:2;padding:36px 32px;}
 .service-card__body h3{
   font-family:var(--font-display);
@@ -427,6 +436,8 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
    APPROCHE (dark section — "sous la surface")
    ========================================================================== */
 .approche{
+  position:relative;
+  overflow:hidden;
   background:var(--ink);
   color:var(--paper);
   padding:140px 0;
@@ -458,7 +469,48 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 @media (min-width:960px){ .about__grid{grid-template-columns:0.8fr 1.2fr;align-items:start;} }
 .about__media img{position:sticky;top:120px;}
 .about__content .section-title{margin-bottom:28px;}
-.about__text{display:flex;flex-direction:column;gap:18px;color:var(--ink-soft);font-size:16px;margin-bottom:48px;}
+.about__text{
+  display:flex;flex-direction:column;gap:16px;
+  color:var(--ink-soft);
+  font-size:14px;
+  line-height:1.75;
+  text-align:justify;
+  margin-bottom:44px;
+}
+.about__text p:first-of-type{
+  font-family:var(--font-display);
+  font-size:19px;
+  font-style:italic;
+  color:var(--ink);
+}
+.about__text p:nth-of-type(2)::first-letter{
+  font-family:var(--font-display);
+  font-size:52px;
+  font-weight:500;
+  float:left;
+  line-height:0.8;
+  padding:6px 8px 0 0;
+  color:var(--rust);
+}
+@media (min-width:1300px){
+  .about__text{
+    column-count:2;
+    column-gap:36px;
+    column-rule:1px solid var(--line);
+  }
+  .about__text p{break-inside:avoid-column;}
+}
+
+.about__highlight{
+  font-family:var(--font-display);
+  font-size:22px;
+  font-style:italic;
+  line-height:1.5;
+  color:var(--rust);
+  border-top:1px solid var(--line);
+  padding-top:32px;
+  margin-bottom:48px;
+}
 
 .pull-quote{
   font-family:var(--font-display);
@@ -570,6 +622,8 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
    FOOTER
    ========================================================================== */
 .footer{
+  position:relative;
+  overflow:hidden;
   background:var(--ink);
   color:var(--paper);
   padding:120px 0 48px;
@@ -607,3 +661,117 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
   color:rgba(255,252,243,0.55);
 }
 .footer .social-links a{border-color:rgba(255,252,243,0.55);color:rgba(255,252,243,0.72);}
+
+/* ==========================================================================
+   INTRO SCREEN
+   ========================================================================== */
+.intro-screen{
+  position:fixed;inset:0;z-index:200;
+  background:var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .8s var(--ease), visibility .8s var(--ease);
+}
+.intro-screen.is-hidden{opacity:0;visibility:hidden;pointer-events:none;}
+.intro-screen__logo{
+  width:min(380px, 60vw);
+  height:auto;
+  clip-path:inset(0 100% 0 0);
+  animation:introWipe 1.3s var(--ease) forwards .2s;
+}
+@keyframes introWipe{ to{clip-path:inset(0 0 0 0);} }
+body.intro-active{overflow:hidden;}
+
+/* ==========================================================================
+   GRAIN TEXTURE (dark sections)
+   ========================================================================== */
+.grain::after{
+  content:"";
+  position:absolute;inset:0;z-index:3;
+  pointer-events:none;
+  opacity:.05;
+  mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ==========================================================================
+   CUSTOM CURSOR
+   ========================================================================== */
+@media (hover:hover) and (pointer:fine){
+  body{cursor:none;}
+  a,button,.situation-card,.service-card{cursor:none;}
+}
+.cursor-dot{
+  position:fixed;top:0;left:0;
+  width:10px;height:10px;
+  border-radius:50%;
+  background:var(--rust);
+  pointer-events:none;
+  z-index:999;
+  transform:translate(-50%,-50%);
+  transition:width .25s var(--ease), height .25s var(--ease), background .25s var(--ease);
+  display:none;
+}
+@media (hover:hover) and (pointer:fine){ .cursor-dot{display:block;} }
+.cursor-dot.is-hover{
+  width:44px;height:44px;
+  background:rgba(119,46,3,0.15);
+  border:1px solid var(--rust);
+}
+.cursor-dot.is-dark{background:var(--paper);}
+.cursor-dot.is-dark.is-hover{background:rgba(255,252,243,0.15);border-color:var(--paper);}
+
+/* ==========================================================================
+   GHOST NUMERALS (asymmetric background accents)
+   ========================================================================== */
+.ghost-num{
+  position:absolute;
+  font-family:var(--font-display);
+  font-size:clamp(180px,26vw,420px);
+  font-weight:600;
+  line-height:1;
+  color:rgba(255,252,243,0.05);
+  z-index:0;
+  pointer-events:none;
+  user-select:none;
+}
+.section-light .ghost-num{color:rgba(38,1,1,0.04);}
+
+/* ==========================================================================
+   WORD REVEAL
+   ========================================================================== */
+.reveal-words{overflow:visible;}
+.reveal-words .word{display:inline-block;overflow:hidden;vertical-align:top;}
+.reveal-words .word-inner{
+  display:inline-block;
+  transform:translateY(110%);
+  transition:transform .7s var(--ease);
+}
+.reveal-words.is-visible .word-inner{transform:translateY(0);}
+
+/* ==========================================================================
+   STATS (animated counters)
+   ========================================================================== */
+.stats{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:32px;
+  margin:56px 0;
+  padding:36px 0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+@media (min-width:640px){ .stats{grid-template-columns:1fr 1fr;} }
+.stat__num{
+  font-family:var(--font-display);
+  font-size:clamp(40px,5vw,64px);
+  color:var(--rust);
+  line-height:1;
+  display:block;
+  margin-bottom:8px;
+}
+.stat__label{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);}
+
+/* ==========================================================================
+   MAGNETIC BUTTONS
+   ========================================================================== */
+.btn{will-change:transform;}
