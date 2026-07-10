@@ -166,18 +166,18 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
   position:fixed;top:0;left:0;right:0;
   z-index:50;
   padding:18px 0;
-  transition:background .4s var(--ease), padding .4s var(--ease), border-color .4s var(--ease);
-  border-bottom:1px solid transparent;
+  background:rgba(38,1,1,0.94);
+  backdrop-filter:blur(10px);
+  transition:padding .4s var(--ease), box-shadow .4s var(--ease);
+  border-bottom:1px solid var(--line-dark);
 }
 .site-header.is-scrolled{
-  background:rgba(238,227,204,.88);
-  backdrop-filter:blur(10px);
   padding:12px 0;
-  border-color:var(--line);
+  box-shadow:0 8px 24px rgba(38,1,1,0.15);
 }
 .site-header__inner{display:flex;align-items:center;justify-content:space-between;}
 .brand{display:flex;align-items:center;gap:12px;}
-.brand__mark{height:26px;width:auto;object-fit:contain;}
+.brand__mark{height:26px;width:auto;object-fit:contain;filter:brightness(0) invert(1);}
 .brand__text{
   font-family:var(--font-body);
   font-size:11px;
@@ -185,8 +185,11 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
   text-transform:uppercase;
   display:none;
   opacity:.75;
+  color:var(--paper);
 }
 @media (min-width:640px){ .brand__text{display:block;} }
+.site-header .btn--ghost{border-color:var(--paper);color:var(--paper);}
+.site-header .btn--ghost:hover{background:var(--paper);color:var(--ink);}
 
 /* ==========================================================================
    HERO
@@ -320,8 +323,7 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 .situations__grid [data-reveal]:nth-child(6){transition-delay:.4s;}
 
 /* ==========================================================================
-   ROLE (photo background, dark overlay — echoes the hero) — now the merged
-   "mon rôle + approche" section
+   ROLE (photo background, dark overlay — echoes the hero)
    ========================================================================== */
 .role{
   position:relative;
@@ -365,7 +367,6 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 .steps__num--light{color:var(--paper);border-color:var(--line-dark);}
 .steps__item h3{font-family:var(--font-display);font-size:19px;font-weight:500;margin-bottom:10px;text-transform:uppercase;}
 .steps__item p{font-size:14.5px;color:var(--ink-soft);}
-.role .steps__item p{color:rgba(255,252,243,0.82);}
 
 /* ==========================================================================
    MA MÉTHODE — pillar cards (visually distinct from the numbered step pattern)
@@ -491,17 +492,25 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
   position:absolute;
   top:18px;left:18px;right:-18px;bottom:-18px;
   border:1px solid var(--rust);
+  border-radius:50% 50% 6px 6px / 30% 30% 6px 6px;
   z-index:0;
 }
-.about__media img{position:sticky;top:120px;}
-.about__img{
-  position:relative;
+.about__media-inner{
+  position:sticky;
+  top:120px;
   z-index:1;
-  filter:grayscale(0.18) contrast(1.05) saturate(0.95);
-  clip-path:inset(0 0 0 100%);
-  transition:clip-path 1.2s var(--ease);
+  overflow:hidden;
+  border-radius:50% 50% 6px 6px / 30% 30% 6px 6px;
+  aspect-ratio:0.82;
 }
-.about__media.is-visible .about__img{clip-path:inset(0 0 0 0%);}
+.about__img{
+  width:100%;height:100%;object-fit:cover;
+  filter:grayscale(0.18) contrast(1.05) saturate(0.95);
+  opacity:0;
+  transform:scale(1.18);
+  transition:opacity 1s var(--ease), transform 1.3s var(--ease);
+}
+.about__media.is-visible .about__img{opacity:1;transform:scale(1);}
 .about__content .section-title{margin-bottom:28px;}
 .about__text{
   display:flex;flex-direction:column;gap:16px;
@@ -545,23 +554,6 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
   padding-top:32px;
   margin-bottom:48px;
 }
-
-.pull-quote{
-  font-family:var(--font-display);
-  font-size:24px;
-  font-style:italic;
-  line-height:1.4;
-  color:var(--rust);
-  border-left:2px solid var(--rust);
-  padding-left:28px;
-  margin-bottom:48px;
-}
-.pull-quote__en{display:block;font-family:var(--font-mono);font-size:12px;font-style:normal;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);margin-bottom:10px;}
-
-.credentials{display:flex;flex-direction:column;gap:22px;margin-bottom:40px;}
-.credentials li{padding-top:20px;border-top:1px solid var(--line);}
-.credentials h4{font-family:var(--font-display);font-size:17px;font-weight:500;margin-bottom:8px;}
-.credentials p{font-size:14px;color:var(--ink-soft);}
 
 .social-links{display:flex;gap:20px;}
 .social-links a{
@@ -665,15 +657,16 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 }
 .footer__words{
   font-family:var(--font-mono);
-  font-size:13px;
-  letter-spacing:.1em;
+  font-size:clamp(10px,2.8vw,13px);
+  letter-spacing:.08em;
   text-transform:uppercase;
   color:var(--paper);
   display:flex;
   justify-content:center;
-  gap:22px;
+  flex-wrap:nowrap;
+  gap:clamp(8px,2vw,22px);
   margin-bottom:24px;
-  flex-wrap:wrap;
+  white-space:nowrap;
 }
 .footer__title{
   font-family:var(--font-display);
@@ -681,10 +674,19 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
   font-size:clamp(22px,3.4vw,36px);
   text-transform:uppercase;
   letter-spacing:.02em;
-  margin-bottom:44px;
+  margin-bottom:32px;
+}
+.footer__signature{
+  font-family:var(--font-display);
+  font-style:italic;
+  font-size:14px;
+  line-height:1.6;
+  color:rgba(255,252,243,0.55);
+  max-width:440px;
+  margin:0 auto 12px;
 }
 .footer__meta{
-  margin-top:90px;
+  margin-top:48px;
   padding-top:28px;
   border-top:1px solid var(--line-dark);
   display:flex;
@@ -783,7 +785,7 @@ body.intro-active{overflow:hidden;}
 .reveal-words.is-visible .word-inner{transform:translateY(0);}
 
 /* ==========================================================================
-   STATS (animated counters)
+   STATS (numbers + credentials, same visual family)
    ========================================================================== */
 .stats{
   display:grid;
@@ -800,6 +802,15 @@ body.intro-active{overflow:hidden;}
   font-size:clamp(40px,5vw,64px);
   color:var(--rust);
   line-height:1;
+  display:block;
+  margin-bottom:8px;
+}
+.stat__headline{
+  font-family:var(--font-display);
+  font-size:clamp(20px,2.6vw,26px);
+  font-weight:500;
+  color:var(--rust);
+  line-height:1.2;
   display:block;
   margin-bottom:8px;
 }
