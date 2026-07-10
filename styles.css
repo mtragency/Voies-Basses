@@ -320,7 +320,8 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 .situations__grid [data-reveal]:nth-child(6){transition-delay:.4s;}
 
 /* ==========================================================================
-   ROLE (photo background, dark overlay — echoes the hero)
+   ROLE (photo background, dark overlay — echoes the hero) — now the merged
+   "mon rôle + approche" section
    ========================================================================== */
 .role{
   position:relative;
@@ -364,12 +365,54 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 .steps__num--light{color:var(--paper);border-color:var(--line-dark);}
 .steps__item h3{font-family:var(--font-display);font-size:19px;font-weight:500;margin-bottom:10px;text-transform:uppercase;}
 .steps__item p{font-size:14.5px;color:var(--ink-soft);}
+.role .steps__item p{color:rgba(255,252,243,0.82);}
 
 /* ==========================================================================
-   MA MÉTHODE
+   MA MÉTHODE — pillar cards (visually distinct from the numbered step pattern)
    ========================================================================== */
-.methode{padding:100px 0 140px;}
+.methode{padding:100px 0 140px;position:relative;overflow:hidden;}
 .methode .eyebrow{margin-bottom:44px;}
+.pillars{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+}
+@media (min-width:720px){ .pillars{grid-template-columns:1fr 1fr;} }
+.pillar{
+  background:var(--paper-soft);
+  padding:40px 32px;
+  position:relative;
+  transition:background .4s var(--ease), transform .4s var(--ease), box-shadow .4s var(--ease);
+}
+.pillar:hover{
+  background:#fff;
+  transform:translateY(-4px);
+  box-shadow:0 20px 44px rgba(38,1,1,0.08);
+  z-index:1;
+}
+.pillar__badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:36px;height:36px;
+  border-radius:50%;
+  border:1px solid var(--rust);
+  color:var(--rust);
+  font-family:var(--font-body);
+  font-size:12px;
+  letter-spacing:.02em;
+  margin-bottom:20px;
+}
+.pillar h3{
+  font-family:var(--font-display);
+  font-size:20px;
+  font-weight:500;
+  text-transform:uppercase;
+  margin-bottom:12px;
+}
+.pillar p{font-size:14.5px;color:var(--ink-soft);}
 
 /* ==========================================================================
    SERVICES
@@ -433,31 +476,6 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 .service-card__body .link-arrow:hover{border-color:var(--paper);}
 
 /* ==========================================================================
-   APPROCHE (dark section — "sous la surface")
-   ========================================================================== */
-.approche{
-  position:relative;
-  overflow:hidden;
-  background:var(--ink);
-  color:var(--paper);
-  padding:140px 0;
-}
-.approche__text{
-  font-size:18px;
-  color:rgba(255,252,243,0.72);
-  max-width:680px;
-  margin:28px 0 72px;
-}
-.approche__steps{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:40px;
-}
-@media (min-width:720px){ .approche__steps{grid-template-columns:repeat(4,1fr);} }
-.approche__steps h3{font-family:var(--font-display);font-size:19px;font-weight:500;margin-bottom:10px;}
-.approche__steps p{font-size:14.5px;color:rgba(255,252,243,0.6);}
-
-/* ==========================================================================
    ABOUT
    ========================================================================== */
 .about{padding:140px 0;}
@@ -467,7 +485,23 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
   gap:56px;
 }
 @media (min-width:960px){ .about__grid{grid-template-columns:0.8fr 1.2fr;align-items:start;} }
+.about__media{position:relative;}
+.about__media::before{
+  content:"";
+  position:absolute;
+  top:18px;left:18px;right:-18px;bottom:-18px;
+  border:1px solid var(--rust);
+  z-index:0;
+}
 .about__media img{position:sticky;top:120px;}
+.about__img{
+  position:relative;
+  z-index:1;
+  filter:grayscale(0.18) contrast(1.05) saturate(0.95);
+  clip-path:inset(0 0 0 100%);
+  transition:clip-path 1.2s var(--ease);
+}
+.about__media.is-visible .about__img{clip-path:inset(0 0 0 0%);}
 .about__content .section-title{margin-bottom:28px;}
 .about__text{
   display:flex;flex-direction:column;gap:16px;
@@ -734,7 +768,7 @@ body.intro-active{overflow:hidden;}
   pointer-events:none;
   user-select:none;
 }
-.section-light .ghost-num{color:rgba(38,1,1,0.04);}
+.ghost-num.section-light{color:rgba(38,1,1,0.045);}
 
 /* ==========================================================================
    WORD REVEAL
