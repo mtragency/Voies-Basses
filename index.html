@@ -14,6 +14,14 @@
 </head>
 <body>
 
+<!-- ============ INTRO SCREEN ============ -->
+<div class="intro-screen" id="introScreen">
+  <img src="hero-logo-white.png" alt="Voies Basses" class="intro-screen__logo">
+</div>
+
+<!-- ============ CUSTOM CURSOR ============ -->
+<div class="cursor-dot" id="cursorDot"></div>
+
 <!-- ============ DEPTH RAIL (signature element) ============ -->
 <nav class="depth-rail" aria-hidden="true">
   <div class="depth-rail__track">
@@ -43,7 +51,7 @@
 <main>
 
   <!-- ============ HERO ============ -->
-  <section class="hero" id="hero">
+  <section class="hero grain" id="hero">
     <div class="hero__media">
       <img src="hero-portrait.jpeg" alt="Meriem Tiar, coach en transformation personnelle" class="hero__img" data-reveal>
       <div class="hero__grain"></div>
@@ -60,8 +68,8 @@
   <!-- ============ STATEMENT ============ -->
   <section class="statement">
     <div class="wrap wrap--narrow">
-      <p class="statement__text" data-reveal>
-        Comprendre ce qui te retient pour <span class="italic accent">créer la vie que tu mérites</span>
+      <p class="statement__text reveal-words">
+        Comprendre ce qui te retient pour créer la vie que tu mérites
       </p>
       <p class="statement__body" data-reveal>
         Tu sens que tu tournes en rond malgré tous tes efforts. Tu veux changer, mais tu ne sais pas par où commencer.
@@ -111,7 +119,8 @@
   </section>
 
   <!-- ============ MON RÔLE ============ -->
-  <section class="role">
+  <section class="role grain">
+    <span class="ghost-num" style="top:40px; right:5%;" aria-hidden="true">01</span>
     <div class="role__media" data-reveal>
       <img src="role-portrait.jpg" alt="Meriem Tiar en séance" class="role-img">
     </div>
@@ -238,7 +247,8 @@
   </section>
 
   <!-- ============ APPROCHE ============ -->
-  <section class="approche" id="approche">
+  <section class="approche grain" id="approche">
+    <span class="ghost-num" style="bottom:-40px; left:4%;" aria-hidden="true">02</span>
     <div class="wrap">
       <h2 class="section-title section-title--light" data-reveal>approche&nbsp;: affronter pour libérer</h2>
       <p class="approche__text" data-reveal>
@@ -256,6 +266,35 @@
     </div>
   </section>
 
+  <!-- ============ MA MÉTHODE ============ -->
+  <section class="methode">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>ma méthode</p>
+      <ol class="steps">
+        <li class="steps__item" data-reveal>
+          <span class="steps__num">01</span>
+          <h3>Ancrée dans les résultats</h3>
+          <p>Chaque échange t'apporte quelque chose de concret. Pas de théorie sans application.</p>
+        </li>
+        <li class="steps__item" data-reveal>
+          <span class="steps__num">02</span>
+          <h3>Une vraie méthodologie stratégique</h3>
+          <p>Diagnostic clair de tes forces et de ce qui te bloque, plan d'action structuré, mise en œuvre suivie avec rigueur.</p>
+        </li>
+        <li class="steps__item" data-reveal>
+          <span class="steps__num">03</span>
+          <h3>Holistique</h3>
+          <p>Identité, corps, pensées, travail, relations&nbsp;: tout est interconnecté. On ne traite jamais un point isolé du reste.</p>
+        </li>
+        <li class="steps__item" data-reveal>
+          <span class="steps__num">04</span>
+          <h3>Profondément transformatrice</h3>
+          <p>On ne reste pas en surface. On va chercher ce qui se joue vraiment&nbsp;: pour un changement qui dure.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
   <!-- ============ QUI SUIS-JE ============ -->
   <section class="about" id="qui-suis-je">
     <div class="wrap about__grid">
@@ -265,12 +304,25 @@
       <div class="about__content">
         <h2 class="section-title" data-reveal>Qui suis-je</h2>
         <div class="about__text" data-reveal>
-          <p>Ma philosophie s'ancre dans une quête d'émancipation présente depuis mon plus jeune âge, guidée non par la peur de l'échec, mais par celle de ne jamais oser explorer mon plein potentiel. Ce fil conducteur traverse l'ensemble de mes engagements professionnels, créatifs et associatifs, et m'a menée à explorer de nombreux univers, toujours animée par la même question&nbsp;: qu'est-ce qui permet à une personne de devenir pleinement elle-même&nbsp;?</p>
-          <p>Pendant longtemps, j'ai cherché les réponses à l'extérieur. Je voulais comprendre pourquoi certaines situations se répétaient, pourquoi certains défis revenaient sous différentes formes, pourquoi certaines expériences avaient le pouvoir de nous transformer profondément. C'est en apprenant à décoder ces schémas que j'ai commencé à transformer ma propre vie.</p>
-          <p>Mon parcours a d'abord pris racine dans l'accompagnement de projets, d'entrepreneurs, d'étudiants et de porteurs d'idées à travers le branding, la stratégie et la valorisation de leur singularité. Mais plus j'accompagnais de personnes, plus une évidence s'imposait à moi&nbsp;: les obstacles que nous rencontrons dans nos projets reflètent souvent ceux que nous rencontrons dans notre rapport à nous-mêmes.</p>
-          <p>Derrière les difficultés à se positionner, à prendre sa place, à communiquer, à se rendre visible ou à concrétiser ses ambitions, il existe souvent des peurs, des croyances, des conditionnements et des schémas plus profonds qui influencent notre manière d'être et d'agir. J'ai alors compris que notre identité influence tout&nbsp;: elle façonne la manière dont nous nous percevons, dont nous sommes perçus, les opportunités que nous nous autorisons à saisir, les relations que nous construisons et les choix que nous faisons au quotidien.</p>
-          <p>Cette prise de conscience m'a amenée à dépasser le branding traditionnel pour explorer ce qui se joue sous la surface. Car avant de transformer notre image, nos résultats ou notre trajectoire, il est souvent nécessaire de comprendre les mécanismes invisibles qui les façonnent. Aujourd'hui, ma vision est profondément holistique&nbsp;: l'identité, le corps, les pensées, le travail, les relations, la créativité et l'image que nous projetons dialoguent en permanence. Ensemble, ils constituent un même écosystème et participent à notre épanouissement.</p>
-          <p>C'est ce travail d'exploration et d'alignement que je propose aujourd'hui à travers mes accompagnements, mes conférences, mes ateliers et mes prises de parole. Mon approche se situe à la rencontre de la stratégie, de la pédagogie et de la transformation personnelle. Je ne te dis pas quoi faire. Je t'aide à comprendre ce qui se joue afin que tu puisses avancer avec davantage de conscience, de liberté et d'alignement. Parce que révéler son potentiel ne consiste pas à devenir quelqu'un d'autre&nbsp;: il s'agit de devenir pleinement soi-même.</p>
+          <p>Je suis Meriem.</p>
+          <p>Ma philosophie s'ancre dans une quête d'émancipation présente depuis mon plus jeune âge. Ce fil conducteur traverse l'ensemble de mes engagements professionnels, créatifs et associatifs, toujours animé par la même aspiration&nbsp;: comment se libérer de tout ce qui nous a été imposé (société, traumatismes, conditionnements, attentes) pour devenir pleinement nous-mêmes&nbsp;?</p>
+          <p>Cette démarche, je l'ai d'abord mise au service de mon propre travail intérieur&nbsp;: psychologues, hypnothérapie, magnétisme, auriculothérapie, constellations familiales, EMDR, PNL, TCC, psychiatrie, énergéticiens… Six années de thérapie active, auxquelles s'ajoutent dix-sept ans de lectures, d'apprentissages et de formations autour du développement personnel. Ce long travail intérieur a été le meilleur investissement de ma vie. Traverser ces blocages et ces épreuves (attachements toxiques, traumatismes, anxiété chronique, deuil, diagnostic tardif de TDAH…) m'a permis de construire une vie profondément alignée avec qui je suis&nbsp;: libre, apaisée, authentique et entourée de relations saines, où je peux chaque jour exprimer ce qui m'anime, explorer mes multiples passions et créer avec sens.</p>
+          <p>Au début de mon parcours professionnel, je me suis naturellement tournée vers le marketing, une discipline fondée sur l'étude du comportement humain. En parallèle, je me suis investie dans l'accompagnement stratégique. En tant qu'intervenante et coach, j'ai accompagné des profils de tous âges et de tous horizons&nbsp;: étudiants, entrepreneurs, porteurs de projets, associations… J'ai observé la même chose à chaque fois&nbsp;: leur projet n'était jamais «&nbsp;juste&nbsp;» professionnel. Il prolongeait leur parcours de vie, incarnait leur passion et matérialisait leurs valeurs, leur mission et leurs zones de génie.</p>
+          <p>Mon accompagnement s'est alors approfondi. Au-delà de la stratégie, j'ai commencé à explorer avec eux leur identité, leur image et leur manière de travailler pour qu'elles soient plus alignées avec qui ils sont. J'ai vu que les véritables blocages se situaient souvent bien au-delà du projet lui-même&nbsp;: croyances limitantes, procrastination, mécanismes d'autosabotage, schémas hérités de l'enfance… J'ai compris que les difficultés financières, affectives ou professionnelles n'étaient souvent que la partie visible de l'iceberg.</p>
+          <p>C'est de ce croisement entre stratégie, pédagogie et développement personnel qu'est née ma méthode&nbsp;: une approche qui réunit stratégie, pédagogie et transformation personnelle, ancrée dans une vision holistique de l'épanouissement, où l'identité, le corps, les pensées, le travail, les relations, la créativité et l'image que nous projetons dialoguent en permanence.</p>
+        </div>
+
+        <p class="about__highlight reveal-words">À travers mes accompagnements comme mon podcast, mon ambition est de créer un espace de confiance, un refuge où les Voix habituellement basses osent parler plus fort et se confier. Un lieu où révéler ensemble les chemins, les visions et les destinées les moins évidents, les moins empruntés&nbsp;: les Voies Basses.</p>
+
+        <div class="stats" data-reveal>
+          <div>
+            <span class="stat__num" data-count="6" data-suffix=" ans">0</span>
+            <span class="stat__label">de thérapie active</span>
+          </div>
+          <div>
+            <span class="stat__num" data-count="17" data-suffix=" ans">0</span>
+            <span class="stat__label">d'apprentissage &amp; formation en développement personnel</span>
+          </div>
         </div>
 
         <blockquote class="pull-quote" data-reveal>
@@ -306,7 +358,7 @@
   <section class="mission">
     <div class="wrap wrap--narrow">
       <p class="eyebrow" data-reveal>ma mission</p>
-      <p class="mission__text" data-reveal>T'aider à devenir la meilleure version de toi-même et à bâtir une vie alignée à qui tu es vraiment.</p>
+      <p class="mission__text reveal-words">T'aider à devenir la meilleure version de toi-même et à bâtir une vie alignée à qui tu es vraiment.</p>
     </div>
   </section>
 
@@ -359,7 +411,7 @@
           <span class="testimonial-card__quote">"</span>
           <p class="testimonial-card__text">Une très belle rencontre et un super accompagnement réalisé par Meriem, nous qui étions novices dans le domaine du marketing. Aujourd'hui nous fêtons le 1 an de notre boutique en ligne, et nous le devons en grande partie à ses conseils.</p>
           <p class="testimonial-card__name">Nicolas Poinsot</p>
-          <p class="testimonial-card__role">Entrepreneur e-commerce</p>
+          <p class="testimonial-card__role">Entrepreneur en e-commerce</p>
         </article>
 
       </div>
@@ -375,7 +427,7 @@
 </main>
 
 <!-- ============ FOOTER CTA ============ -->
-<footer class="footer">
+<footer class="footer grain">
   <div class="wrap footer__inner">
     <div class="footer__words" data-reveal>
       <span>alignement</span>
