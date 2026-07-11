@@ -182,3 +182,32 @@ document.querySelectorAll('.stat__num').forEach((el) => {
   }, { threshold: 0.5 });
   counterObserver.observe(el);
 });
+
+/* ---------- Stat headlines: pop-in animation matching the counters ---------- */
+document.querySelectorAll('.stat__headline').forEach((el) => {
+  const headlineObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        el.classList.add('is-counted');
+        headlineObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  headlineObserver.observe(el);
+});
+
+/* ---------- Service cards: darken progressively as they scroll through the viewport ---------- */
+const darkenCards = document.querySelectorAll('.service-card');
+function updateCardDarkening() {
+  const vh = window.innerHeight;
+  darkenCards.forEach((card) => {
+    const rect = card.getBoundingClientRect();
+    let progress = 1 - (rect.top / vh);
+    progress = Math.max(0, Math.min(1, progress));
+    const strength = 0.35 + progress * 0.62;
+    card.style.setProperty('--overlay-strength', strength.toFixed(2));
+  });
+}
+window.addEventListener('scroll', updateCardDarkening, { passive: true });
+window.addEventListener('resize', updateCardDarkening);
+updateCardDarkening();
