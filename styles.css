@@ -1,10 +1,17 @@
 /* ==========================================================================
    VOIES BASSES — design tokens
    Palette: bark ink / linen paper / burnt rust / muted moss / soft ochre
-   Type: Fraunces (display) + Inter (body) + IBM Plex Mono (labels)
-   Signature: vertical "depth rail" — literal descent through the page,
-   echoing "voies basses" (going beneath the surface).
+   Type: Playfair Display (structural) + Brown Sugar (accent) + Glacial Indifference (body)
    ========================================================================== */
+
+@font-face{
+  font-family:'Brown Sugar';
+  src:url('fonts/Brown-Sugar-Regular.woff2') format('woff2'),
+      url('fonts/Brown-Sugar-Regular.ttf') format('truetype');
+  font-weight:normal;
+  font-style:normal;
+  font-display:swap;
+}
 
 :root{
   --ink:#260101;
@@ -17,6 +24,7 @@
   --line-dark: rgba(255,252,243,0.22);
 
   --font-display:'Playfair Display', serif;
+  --font-accent:'Brown Sugar', 'Playfair Display', serif;
   --font-body:'Glacial Indifference', sans-serif;
   --font-mono:'Glacial Indifference', sans-serif;
 
@@ -267,10 +275,10 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
    ========================================================================== */
 .statement{padding:140px 0 100px;}
 .statement__text{
-  font-family:var(--font-display);
+  font-family:var(--font-accent);
   font-weight:400;
-  font-size:clamp(26px,4.2vw,42px);
-  line-height:1.3;
+  font-size:clamp(30px,5vw,52px);
+  line-height:1.25;
   margin-bottom:28px;
 }
 .statement__body{font-size:18px;color:var(--ink-soft);max-width:600px;}
@@ -381,7 +389,7 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 .steps__item p{font-size:14.5px;color:var(--ink-soft);}
 
 /* ==========================================================================
-   MA MÉTHODE — pillar cards (visually distinct from the numbered step pattern)
+   MA MÉTHODE — pillar cards
    ========================================================================== */
 .methode{padding:100px 0 140px;position:relative;overflow:hidden;}
 .methode .eyebrow{margin-bottom:44px;}
@@ -465,6 +473,7 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
   opacity:var(--overlay-strength, 0.55);
   transition:opacity .2s linear;
 }
+.service-card:hover .service-card__overlay{opacity:.94 !important;}
 .service-card__body{position:relative;z-index:2;padding:36px 32px;}
 .service-card__body h3{
   font-family:var(--font-display);
@@ -523,10 +532,10 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
   margin-bottom:18px;
 }
 .about-hero__name{
-  font-family:var(--font-display);
-  font-weight:500;
-  font-size:clamp(48px,9vw,128px);
-  line-height:.95;
+  font-family:var(--font-accent);
+  font-weight:400;
+  font-size:clamp(56px,10vw,150px);
+  line-height:1;
   letter-spacing:-.01em;
   color:var(--ink);
   max-width:640px;
@@ -569,15 +578,6 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
     column-rule:1px solid var(--line);
   }
   .about__text p{break-inside:avoid-column;}
-}
-
-.about__signature{
-  font-family:var(--font-display);
-  font-style:italic;
-  font-size:13px;
-  letter-spacing:.03em;
-  color:var(--ink-soft);
-  margin-bottom:32px;
 }
 
 .about__highlight{
@@ -695,11 +695,10 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
   white-space:nowrap;
 }
 .footer__title{
-  font-family:var(--font-display);
+  font-family:var(--font-accent);
   font-weight:400;
-  font-size:clamp(22px,3.4vw,36px);
-  text-transform:uppercase;
-  letter-spacing:.02em;
+  font-size:clamp(24px,4vw,44px);
+  letter-spacing:0;
   margin-bottom:32px;
 }
 .footer__signature{
@@ -811,7 +810,7 @@ body.intro-active{overflow:hidden;}
 .reveal-words.is-visible .word-inner{transform:translateY(0);}
 
 /* ==========================================================================
-   STATS (animated counters)
+   STATS
    ========================================================================== */
 .stats{
   display:grid;
@@ -833,13 +832,17 @@ body.intro-active{overflow:hidden;}
 }
 .stat__headline{
   font-family:var(--font-display);
-  font-size:clamp(34px,4.2vw,50px);
+  font-size:clamp(22px,2.8vw,32px);
   font-weight:500;
   color:var(--rust);
-  line-height:1;
+  line-height:1.1;
   display:block;
   margin-bottom:8px;
+  opacity:0;
+  transform:scale(.85);
+  transition:opacity .5s var(--ease), transform .5s var(--ease);
 }
+.stat__headline.is-counted{opacity:1;transform:scale(1);}
 .stat__label{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);}
 
 /* ==========================================================================
