@@ -1,6 +1,5 @@
 /* ==========================================================================
    VOIES BASSES — design tokens
-   Palette: bark ink / linen paper / burnt rust / muted moss / soft ochre
    Type: Playfair Display (structural) + Brown Sugar (accent) + Glacial Indifference (body)
    ========================================================================== */
 
@@ -72,7 +71,6 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
   .wrap{padding-left:calc(var(--rail-w) + 40px);padding-right:40px;}
 }
 
-/* ---------- Reveal on scroll ---------- */
 [data-reveal]{
   opacity:0;
   transform:translateY(28px);
@@ -80,7 +78,6 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 }
 [data-reveal].is-visible{opacity:1;transform:translateY(0);}
 
-/* ---------- Eyebrow / labels ---------- */
 .eyebrow{
   font-family:var(--font-body);
   font-size:11px;
@@ -102,7 +99,6 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 .role .section-title,
 .section-title--light{color:var(--paper) !important;}
 
-/* ---------- Buttons ---------- */
 .btn{
   display:inline-flex;
   align-items:center;
@@ -132,9 +128,7 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 }
 .link-arrow:hover{border-color:var(--rust);}
 
-/* ==========================================================================
-   DEPTH RAIL — signature element
-   ========================================================================== */
+/* ========== DEPTH RAIL ========== */
 .depth-rail{
   position:fixed;
   left:0;top:0;bottom:0;
@@ -144,7 +138,6 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
   padding:120px 0 60px;
 }
 @media (min-width:1000px){ .depth-rail{display:flex;flex-direction:column;align-items:center;} }
-
 .depth-rail__track{
   position:relative;
   width:2px;
@@ -179,9 +172,7 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 }
 .depth-rail__labels li.is-active{opacity:1;color:var(--rust);}
 
-/* ==========================================================================
-   HEADER
-   ========================================================================== */
+/* ========== HEADER ========== */
 .site-header{
   position:fixed;top:0;left:0;right:0;
   z-index:50;
@@ -211,9 +202,7 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 .site-header .btn--ghost{border-color:var(--paper);color:var(--paper);}
 .site-header .btn--ghost:hover{background:var(--paper);color:var(--ink);}
 
-/* ==========================================================================
-   HERO
-   ========================================================================== */
+/* ========== HERO ========== */
 .hero{
   position:relative;
   min-height:100svh;
@@ -247,14 +236,23 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
   height:auto;
   margin-bottom:20px;
 }
-.hero__tagline{
+.hero__headline{
+  font-family:var(--font-display);
+  font-weight:400;
+  font-style:italic;
+  font-size:clamp(26px,4vw,44px);
+  line-height:1.25;
+  color:var(--paper);
+  max-width:600px;
+  margin:0 0 16px;
+}
+.hero__subtext{
   font-family:var(--font-body);
-  font-size:clamp(13px,1.6vw,16px);
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:var(--paper-soft);
+  font-size:clamp(15px,1.8vw,18px);
+  line-height:1.55;
+  color:rgba(255,252,243,0.82);
+  max-width:520px;
   margin:0 0 40px;
-  max-width:560px;
 }
 .scroll-cue{
   position:absolute;bottom:28px;left:50%;
@@ -270,9 +268,7 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 }
 @keyframes scrollcue{ to{top:100%;} }
 
-/* ==========================================================================
-   STATEMENT
-   ========================================================================== */
+/* ========== STATEMENT ========== */
 .statement{padding:140px 0 100px;}
 .statement__text{
   font-family:var(--font-accent);
@@ -283,9 +279,7 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 }
 .statement__body{font-size:18px;color:var(--ink-soft);max-width:600px;}
 
-/* ==========================================================================
-   SITUATIONS
-   ========================================================================== */
+/* ========== SITUATIONS ========== */
 .situations{padding:60px 0 140px;position:relative;overflow:hidden;}
 .situations .section-title{margin-bottom:56px;}
 .situations__grid{
@@ -334,7 +328,6 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 .situation-card:hover h3{transform:translateX(3px);}
 .situation-card p{font-size:14.5px;color:var(--ink-soft);}
 
-/* staggered reveal across the grid */
 .situations__grid [data-reveal]:nth-child(1){transition-delay:0s;}
 .situations__grid [data-reveal]:nth-child(2){transition-delay:.08s;}
 .situations__grid [data-reveal]:nth-child(3){transition-delay:.16s;}
@@ -342,9 +335,7 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 .situations__grid [data-reveal]:nth-child(5){transition-delay:.32s;}
 .situations__grid [data-reveal]:nth-child(6){transition-delay:.4s;}
 
-/* ==========================================================================
-   ROLE (photo background, dark overlay — echoes the hero)
-   ========================================================================== */
+/* ========== ROLE (mon accompagnement, fond photo) ========== */
 .role{
   position:relative;
   padding:120px 0 140px;
@@ -389,10 +380,7 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 .steps__item p{font-size:14.5px;color:var(--ink-soft);}
 .role .steps__item p{color:rgba(255,252,243,0.88) !important;}
 
-
-/* ==========================================================================
-   MA MÉTHODE — pillar cards
-   ========================================================================== */
+/* ========== MA MÉTHODE ========== */
 .methode{padding:100px 0 140px;position:relative;overflow:hidden;}
 .methode .eyebrow{margin-bottom:44px;}
 .pillars{
@@ -437,9 +425,7 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 }
 .pillar p{font-size:14.5px;color:var(--ink-soft);}
 
-/* ==========================================================================
-   SERVICES
-   ========================================================================== */
+/* ========== SERVICES ========== */
 .services{padding:60px 0 140px;}
 .services .section-title{margin-bottom:56px;}
 .services__grid{
@@ -498,9 +484,7 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 .service-card__body .link-arrow{color:var(--paper);border-color:transparent;}
 .service-card__body .link-arrow:hover{border-color:var(--paper);}
 
-/* ==========================================================================
-   ABOUT
-   ========================================================================== */
+/* ========== ABOUT ========== */
 .about{padding:0 0 140px;}
 .about-hero{
   position:relative;
@@ -582,6 +566,15 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
   .about__text p{break-inside:avoid-column;}
 }
 
+.about__signature{
+  font-family:var(--font-display);
+  font-style:italic;
+  font-size:13px;
+  letter-spacing:.03em;
+  color:var(--ink-soft);
+  margin-bottom:32px;
+}
+
 .about__highlight{
   font-family:var(--font-display);
   font-size:22px;
@@ -602,9 +595,8 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
   border-bottom:1px solid var(--ink);
   padding-bottom:2px;
 }
-/* ==========================================================================
-   PODCAST
-   ========================================================================== */
+
+/* ========== PODCAST ========== */
 .podcast{padding:100px 0 120px;}
 .podcast .section-title{margin-bottom:16px;}
 .podcast__intro{
@@ -619,9 +611,7 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
   background:var(--paper-soft);
 }
 
-/* ==========================================================================
-   TESTIMONIALS
-   ========================================================================== */
+/* ========== TESTIMONIALS ========== */
 .testimonials{padding-bottom:120px;}
 .testimonials .section-title{margin-bottom:48px;}
 .testimonials__viewport{
@@ -688,9 +678,7 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 }
 .testimonials__dots span.is-active{background:var(--rust);transform:scale(1.3);}
 
-/* ==========================================================================
-   FOOTER
-   ========================================================================== */
+/* ========== FOOTER ========== */
 .footer{
   position:relative;
   overflow:hidden;
@@ -741,9 +729,7 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 }
 .footer .social-links a{border-color:rgba(255,252,243,0.55);color:rgba(255,252,243,0.72);}
 
-/* ==========================================================================
-   INTRO SCREEN
-   ========================================================================== */
+/* ========== INTRO SCREEN ========== */
 .intro-screen{
   position:fixed;inset:0;z-index:200;
   background:var(--ink);
@@ -760,9 +746,7 @@ h1,h2,h3,h4,p,blockquote{margin:0;}
 @keyframes introWipe{ to{clip-path:inset(0 0 0 0);} }
 body.intro-active{overflow:hidden;}
 
-/* ==========================================================================
-   GRAIN TEXTURE (dark sections)
-   ========================================================================== */
+/* ========== GRAIN TEXTURE ========== */
 .grain::after{
   content:"";
   position:absolute;inset:0;z-index:3;
@@ -772,9 +756,7 @@ body.intro-active{overflow:hidden;}
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* ==========================================================================
-   CUSTOM CURSOR
-   ========================================================================== */
+/* ========== CUSTOM CURSOR ========== */
 @media (hover:hover) and (pointer:fine){
   body{cursor:none;}
   a,button,.situation-card,.service-card{cursor:none;}
@@ -799,9 +781,7 @@ body.intro-active{overflow:hidden;}
 .cursor-dot.is-dark{background:var(--paper);}
 .cursor-dot.is-dark.is-hover{background:rgba(255,252,243,0.15);border-color:var(--paper);}
 
-/* ==========================================================================
-   GHOST NUMERALS (asymmetric background accents)
-   ========================================================================== */
+/* ========== GHOST NUMERALS ========== */
 .ghost-num{
   position:absolute;
   font-family:var(--font-display);
@@ -815,9 +795,7 @@ body.intro-active{overflow:hidden;}
 }
 .ghost-num.section-light{color:rgba(38,1,1,0.045);}
 
-/* ==========================================================================
-   WORD REVEAL
-   ========================================================================== */
+/* ========== WORD REVEAL ========== */
 .reveal-words{overflow:visible;}
 .reveal-words .word{display:inline-block;overflow:hidden;vertical-align:top;}
 .reveal-words .word-inner{
@@ -827,9 +805,7 @@ body.intro-active{overflow:hidden;}
 }
 .reveal-words.is-visible .word-inner{transform:translateY(0);}
 
-/* ==========================================================================
-   STATS
-   ========================================================================== */
+/* ========== STATS ========== */
 .stats{
   display:grid;
   grid-template-columns:1fr;
@@ -863,7 +839,5 @@ body.intro-active{overflow:hidden;}
 .stat__headline.is-counted{opacity:1;transform:scale(1);}
 .stat__label{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);}
 
-/* ==========================================================================
-   MAGNETIC BUTTONS
-   ========================================================================== */
+/* ========== MAGNETIC BUTTONS ========== */
 .btn{will-change:transform;}
